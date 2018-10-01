@@ -212,10 +212,10 @@ define({
     
     item: {
       actions: {
+        links: "Download data",  
         html: "Full metadata record",
         xml: "ISO 19139 XML",
         json: "JSON",
-        links: "Links to resource",
         addToMap: "Add to Map",
         options: {
           caption: "Options",
