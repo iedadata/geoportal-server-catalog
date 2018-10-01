@@ -83,9 +83,9 @@ function(declare, lang, array, string, topic, xhr, appTopics, domClass, domConst
       //util.setNodeText(this.descriptionNode,item.description);
       this._renderDescription(item);
       this._renderThumbnail(item);
-      this._renderItemLinks(hit._id,item);
       this._renderLinksDropdown(item,links);
       this._renderOptionsDropdown(hit._id,item);
+      this._renderItemLinks(hit._id,item);
       this._renderAddToMap(item,links);
       this._renderServiceStatus(item);
       //this._renderWorkbenchLinksDropdown(item,links);
@@ -221,13 +221,15 @@ function(declare, lang, array, string, topic, xhr, appTopics, domClass, domConst
         "class": "dropdown-menu",
       },dd);
       array.forEach(links, function(u){
-        var ddli = domConstruct.create("li",{},ddul);
-        domConstruct.create("a",{
-          "class": "small",
-          href: u,
-          target: "_blank",
-          innerHTML: u
-        },ddli);
+	    if (u.indexOf('dx.doi.org') != -1) {
+	      var ddli = domConstruct.create("li",{},ddul);
+	      domConstruct.create("a",{
+	        "class": "small",
+	        href: u,
+	        target: "_blank",
+	        innerHTML: u
+	      },ddli);
+	    }
       });
       this._mitigateDropdownClip(dd,ddul);
     },
