@@ -6,37 +6,6 @@
         <div style="overflow-y: auto;max-height:  90%;">
 <div id="infoSearchText">Search facets</div>
 
-<!-- Authors -->
-      <div data-dojo-type="app/search/TermsAggregation"
-        data-dojo-props="
-		field:'cited_individual_s',
-		label:'Investigator/Author',
-		props:{size:2000, order:{_term:'asc'}},
-		tooltip:'Cited originator of content from metadata'">
-      </div>
- 
-<!-- Acquisition date. Change from date filter to temporal filter SMR 2017-11-15 
- remove fieldsOperator:'should'-->
-      <div data-dojo-type="app/search/TemporalFilter"
-           data-dojo-props="
-          nestedPath:'timeperiod_nst',
-          field:'timeperiod_nst.begin_dt',
-          toField:'timeperiod_nst.end_dt',
-          interval:'year',
-          open:false,
-          label:'Acquisition date interval'">
-      </div>
-
-<!-- Publication date -->
-     <div data-dojo-type="app/search/TemporalFilter"
-           data-dojo-props="
-          field:'apiso_PublicationDate_dt',
-          interval:'year',
-          open:false,
-          label:'Publication or release date',
-          fieldsOperator: 'must'">
-      </div>
- 
 <!-- IEDA Topic -->   
       <div data-dojo-type="app/search/TermsAggregation"
         data-dojo-props="
@@ -62,6 +31,37 @@
 		label:'IEDA Data Type Categories',
 		props:{size:100, order:{_term:'asc'}},
 		tooltip:'High level data types, from IEDA'">
+      </div>
+      
+<!-- Authors -->
+      <div data-dojo-type="app/search/TermsAggregation"
+        data-dojo-props="
+		field:'cited_individual_s',
+		label:'Investigator/Author',
+		props:{size:2000, order:{_term:'asc'}},
+		tooltip:'Cited originator of content from metadata'">
+      </div>
+ 
+<!-- Acquisition date. Change from date filter to temporal filter SMR 2017-11-15 
+ remove fieldsOperator:'should'-->
+      <div data-dojo-type="app/search/TemporalFilter"
+           data-dojo-props="
+          nestedPath:'timeperiod_nst',
+          field:'timeperiod_nst.begin_dt',
+          toField:'timeperiod_nst.end_dt',
+          interval:'year',
+          open:false,
+          label:'Acquisition date interval'" hidden>
+      </div>
+
+<!-- Publication date -->
+     <div data-dojo-type="app/search/TemporalFilter"
+           data-dojo-props="
+          field:'apiso_PublicationDate_dt',
+          interval:'year',
+          open:false,
+          label:'Publication or release date',
+          fieldsOperator: 'must'" hidden>
       </div>
 
 <!-- Instrument, sensor -->     

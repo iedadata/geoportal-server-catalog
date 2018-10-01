@@ -215,7 +215,7 @@ define({
         html: "Full metadata record",
         xml: "ISO 19139 XML",
         json: "JSON",
-        links: "Links to resource",
+        links: "Download data",
         addToMap: "Add to Map",
         options: {
           caption: "Options",
