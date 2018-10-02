@@ -6,6 +6,33 @@
         <div style="overflow-y: auto;max-height:  90%;">
 <div id="infoSearchText">Search facets</div>
 
+<!-- IEDA Topic -->   
+      <div data-dojo-type="app/search/TermsAggregation"
+        data-dojo-props="
+		field:'ieda_topic_keywords_s',
+		label:'IEDA Topic',
+		props:{size:100, order:{_term:'asc'}},
+		tooltip:'IEDA Science subject areas, from IEDA'">
+      </div>
+ 
+ <!-- IEDA Feature of Interest -->     
+      <div data-dojo-type="app/search/TermsAggregation"
+        data-dojo-props="
+		field:'feature_of_interest_keywords_s',
+		label:'IEDA Feature of Interest',
+		props:{size:100, order:{_term:'asc'}},
+		tooltip:'Geologic features, feature types and realms, from IEDA'">
+      </div>
+           
+<!-- IEDA  Data Type Categories -->   
+      <div data-dojo-type="app/search/TermsAggregation"
+        data-dojo-props="
+		field:'ieda_data_type_keywords_s',
+		label:'IEDA Data Type Categories',
+		props:{size:100, order:{_term:'asc'}},
+		tooltip:'High level data types, from IEDA'">
+      </div>
+        
 <!-- Authors -->
       <div data-dojo-type="app/search/TermsAggregation"
         data-dojo-props="
@@ -24,7 +51,7 @@
           toField:'timeperiod_nst.end_dt',
           interval:'year',
           open:false,
-          label:'Acquisition date interval'">
+          label:'Acquisition date interval'" hidden>
       </div>
 
 <!-- Publication date -->
@@ -34,34 +61,7 @@
           interval:'year',
           open:false,
           label:'Publication or release date',
-          fieldsOperator: 'must'">
-      </div>
- 
-<!-- IEDA Topic -->   
-      <div data-dojo-type="app/search/TermsAggregation"
-        data-dojo-props="
-		field:'ieda_topic_keywords_s',
-		label:'IEDA Topic',
-		props:{size:100, order:{_term:'asc'}},
-		tooltip:'IEDA Science subject areas, from IEDA'">
-      </div>
-
-<!-- IEDA Feature of Interest -->     
-      <div data-dojo-type="app/search/TermsAggregation"
-        data-dojo-props="
-		field:'feature_of_interest_keywords_s',
-		label:'IEDA Feature of Interest',
-		props:{size:100, order:{_term:'asc'}},
-		tooltip:'Geologic features, feature types and realms, from IEDA'">
-      </div>
-
-<!-- IEDA  Data Type Categories -->   
-      <div data-dojo-type="app/search/TermsAggregation"
-        data-dojo-props="
-		field:'ieda_data_type_keywords_s',
-		label:'IEDA Data Type Categories',
-		props:{size:100, order:{_term:'asc'}},
-		tooltip:'High level data types, from IEDA'">
+          fieldsOperator: 'must'" hidden>
       </div>
 
 <!-- Instrument, sensor -->     
