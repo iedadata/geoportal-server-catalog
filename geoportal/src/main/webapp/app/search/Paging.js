@@ -21,9 +21,10 @@ define(["dojo/_base/declare",
         "app/context/app-topics",
         "dojo/text!./templates/Paging.html",
         "dojo/i18n!app/nls/resources",
+        "app/common/ConfirmationDialog",
         "app/search/SearchComponent",
         "app/etc/util"], 
-function(declare, lang, on, domClass, djNumber, topic, appTopics, template, i18n, SearchComponent, util) {
+function(declare, lang, on, domClass, djNumber, topic, appTopics, template, i18n, ConfirmationDialog, SearchComponent, util) {
   
   var oThisClass = declare([SearchComponent], {
  
@@ -37,6 +38,7 @@ function(declare, lang, on, domClass, djNumber, topic, appTopics, template, i18n
     numPerPage: null, 
     previousStart: -1,
     start: 1,
+    firstLoad: true,
     
     typePlural: null,
     typeSingular: null,
@@ -112,6 +114,24 @@ function(declare, lang, on, domClass, djNumber, topic, appTopics, template, i18n
       s = s.replace("{count}",""+djNumber.format(nHits,{}));
       s = s.replace("{type}",sType);
       this.setNodeText(this.countNode,s);
+      
+      if(!this.firstLoad) {
+	      var dialog = new ConfirmationDialog({
+	        title: "Results Found",
+	        content: s,
+	        okLabel: "OK",
+	        showCancel: false
+	      });
+	      dialog.setWidth("200px");
+	      dialog.show().then(function(ok){
+	        if (ok) {
+	          dialog.okCancelBar.showWorking(i18n.general.deleting,false);
+	          dialog.hide();
+	        }
+	      });
+	 } else{
+	     this.firstLoad = false;
+	 }
     },
     
     _renderPaging: function(searchResponse) {

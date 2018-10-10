@@ -55,6 +55,10 @@ function(declare, lang, i18n, ModalBase, OkCancelBar) {
     
     onCancelClicked: function() {},
     onOkClicked: function() {},
+    
+    setWidth: function(width) {
+        $(".modal-dialog").css('width', width);
+     }
 
   });
 
